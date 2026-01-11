@@ -1,9 +1,61 @@
-rlhelpInteractive command constructor based on man and --helpИнтерактивный конструктор команд на основе man и --helpEnglishrlhelp is a CLI utility written in Rust. It parses the help text of any command and turns it into an interactive checklist directly in your terminal.The Problem: Reading long man pages or scrolling through --help output just to find one flag is annoying.The Solution: Launch rlhelp <command>, select the flags you need with checkboxes, preview the command, and run it.FeaturesAuto-Parsing: Extracts flags and descriptions from --help. Automatically falls back to man pages if needed.Freeze Protection: Smart timeout system avoids hanging on interactive tools (like vim or sl).Keyboard Navigation: Use arrows or j/k to navigate.Language Switch: Can force LC_ALL=C (English) if your system locale provides broken or confusing translations.InstallationRequires Rust (Cargo).cargo install --path .
-UsageSimply provide the command name you want to configure:rlhelp git
+# rlhelp
+
+**Interactive command constructor based on `man` and `--help`**
+
+`rlhelp` — это CLI-утилита на **Rust**, которая превращает справку любой команды (`man` и `--help`) в интерактивный конструктор команд прямо в терминале.
+
+## Описание
+
+### Проблема
+Читать длинные `man`-страницы или листать вывод `--help`, чтобы найти один нужный флаг — медленно и неудобно.
+
+### Решение
+Запустите:
+
+```bash
+rlhelp <command>
+```
+
+Вы получите интерактивный список всех доступных флагов, сможете отметить нужные галочками, посмотреть итоговую команду и сразу её выполнить.
+
+## Возможности
+
+- **Авто-парсинг** — извлекает флаги и описания из `--help`. Если справка неполная или отсутствует, автоматически использует `man`.
+- **Защита от зависания** — умная система таймаутов не даёт зависнуть на интерактивных программах (например, `vim` или `less`).
+- **Навигация с клавиатуры** — стрелки или Vim-биндинги (`j` / `k`).
+- **Переключение языка** — возможность принудительно включить английскую справку (`LC_ALL=C`), если системная локализация некорректна.
+
+## Установка
+
+Требуется установленный **Rust (Cargo)**.
+
+```bash
+cargo install --path .
+```
+
+## Использование
+
+Просто укажите команду, для которой хотите собрать параметры:
+
+```bash
+rlhelp git
 rlhelp ls
 rlhelp grep
-Key BindingsKeyAction↑ / kMove up↓ / jMove downSpaceToggle flag selectionEnterExecute commandpPrint command (dry run)lToggle Language (System/EN)q / EscQuitРусскийrlhelp — это консольная утилита на Rust, которая превращает скучную справку любой команды в интерактивное меню.Проблема: Искать нужный флаг в бесконечных man-страницах или грепать выхлоп --help — неудобно.Решение: Запускаете rlhelp <команда>, видите список всех флагов, отмечаете нужные галочками и сразу запускаете сформированную команду.ВозможностиАвто-парсинг: Вытаскивает флаги и описания из --help. Если справка неинформативна — лезет в man.Защита от зависания: Если программа интерактивная (например, vim), rlhelp не зависнет в ожидании текста, а сразу перейдет к man-странице.Удобная навигация: Поддержка стрелок и Vim-биндингов (j/k).Перевод: Возможность принудительно включить английскую справку, если системная локализация кривая или неполная.УстановкаТребуется установленный Rust (Cargo).cargo install --path .
-ИспользованиеПросто укажите имя команды:rlhelp ls
-rlhelp docker
 rlhelp ffmpeg
-Горячие клавишиКлавишаДействие↑ / kВверх↓ / jВнизПробелВыбрать флагEnterВыполнить командуpНапечатать команду (без запуска)lСменить язык (System / English)q / EscВыходDistributed under the MIT License.
+```
+
+## Горячие клавиши
+
+| Клавиша | Действие |
+|-------|---------|
+| ↑ / k | Вверх |
+| ↓ / j | Вниз |
+| Space | Выбрать флаг |
+| Enter | Выполнить команду |
+| p | Показать команду (без запуска) |
+| l | Сменить язык (System / English) |
+| q / Esc | Выход |
+
+## License
+
+Distributed under the **MIT License**.
