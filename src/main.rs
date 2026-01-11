@@ -157,10 +157,10 @@ impl App {
     }
 }
 
-// Новая функция для запуска с таймаутом
+// Запуск с таймаутом
 fn run_with_timeout(mut cmd: Command, timeout: Duration) -> Result<String> {
-    // Важно: stdout/stderr должны быть piped, чтобы мы могли читать их
-    // и чтобы они не мусорили в терминал.
+    // Важно: stdout/stderr должны быть piped, чтобы можно было читать их
+    // и чтобы они не гадили в терминал.
     let mut child = cmd
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
@@ -184,7 +184,7 @@ fn run_with_timeout(mut cmd: Command, timeout: Duration) -> Result<String> {
             Ok(None) => {
                 // Процесс еще идет. Проверяем таймаут.
                 if start.elapsed() > timeout {
-                    // УБИВАЕМ ПАРОВОЗ!
+                    // УБИВАЕМ ПАРОВОЗ (команда sl стартовала и справка не отрабатывала пока поезд не проедет)
                     let _ = child.kill();
                     return Err(anyhow::anyhow!("Таймаут выполнения команды (возможно, интерактивная программа)"));
                 }
