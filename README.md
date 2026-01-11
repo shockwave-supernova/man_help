@@ -2,6 +2,66 @@
 
 **Interactive command constructor based on `man` and `--help`**
 
+`rlhelp` is a CLI utility written in **Rust** that turns command help texts (`--help` and `man`) into an interactive command builder directly in your terminal.
+
+## Description
+
+### The Problem
+Reading long `man` pages or scrolling through `--help` output just to find a single flag is slow and annoying.
+
+### The Solution
+Run:
+
+```bash
+rlhelp <command>
+```
+
+You will see an interactive list of all available flags, select the ones you need with checkboxes, preview the resulting command, and execute it immediately.
+
+## Features
+
+- **Auto parsing** — extracts flags and descriptions from `--help`. If the output is incomplete or missing, automatically falls back to `man`.
+- **Freeze protection** — smart timeout system prevents hanging on interactive programs (e.g. `vim`, `less`).
+- **Keyboard navigation** — arrow keys or Vim-style bindings (`j` / `k`).
+- **Language switch** — ability to force English help (`LC_ALL=C`) if system localization is broken or confusing.
+
+## Installation
+
+Requires **Rust (Cargo)**.
+
+```bash
+cargo install --path .
+```
+
+## Usage
+
+Just provide the command you want to configure:
+
+```bash
+rlhelp git
+rlhelp ls
+rlhelp grep
+rlhelp ffmpeg
+```
+
+## Key Bindings
+
+| Key        | Action                        |
+|------------|-------------------------------|
+| ↑ / k      | Move up                       |
+| ↓ / j      | Move down                     |
+| Space      | Toggle flag selection         |
+| Enter      | Execute command               |
+| p          | Print command (dry run)       |
+| l          | Toggle language (System / EN) |
+| q / Esc    | Quit                          |
+
+---
+
+# rlhelp
+
+**Интерактивный конструктор команд на основе `man` и `--help`**
+
 `rlhelp` — это CLI-утилита на **Rust**, которая превращает справку любой команды (`man` и `--help`) в интерактивный конструктор команд прямо в терминале.
 
 ## Описание
@@ -13,10 +73,10 @@
 Запустите:
 
 ```bash
-rlhelp <command>
+rlhelp <команда>
 ```
 
-Вы получите интерактивный список всех доступных флагов, сможете отметить нужные галочками, посмотреть итоговую команду и сразу её выполнить.
+Вы увидите интерактивный список всех доступных флагов, сможете отметить нужные галочками, посмотреть итоговую команду и сразу её выполнить.
 
 ## Возможности
 
@@ -47,14 +107,14 @@ rlhelp ffmpeg
 ## Горячие клавиши
 
 | Клавиша | Действие |
-|-------|---------|
-| ↑ / k | Вверх |
-| ↓ / j | Вниз |
-| Space | Выбрать флаг |
-| Enter | Выполнить команду |
-| p | Показать команду (без запуска) |
-| l | Сменить язык (System / English) |
-| q / Esc | Выход |
+|--------|----------|
+| ↑ / k  | Вверх   |
+| ↓ / j  | Вниз    |
+| Space  | Выбрать флаг |
+| Enter  | Выполнить команду |
+| p      | Показать команду (без запуска) |
+| l      | Сменить язык (System / English) |
+| q / Esc| Выход   |
 
 ## License
 
