@@ -105,7 +105,7 @@ sudo apt install cargo
 ```bash
  git clone https://github.com/shockwave-supernova/man_help.git
  ```
-#### Установите rhelp:
+#### Смените каталог на папку проекта и установите rhelp:
 ```bash
 cargo install --path .
 ```
